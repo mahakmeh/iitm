@@ -24,7 +24,7 @@ jobs:
           git add daily_commit.txt
           
           # Commit with the specified message and email
-          git commit -m "Daily commit by email 23f3001989@ds.study.iitm.ac.in"
+          git commit -m "Daily commit by the email 23f3001989@ds.study.iitm.ac.in"
           
           # Push the changes back to the repository
           git push
