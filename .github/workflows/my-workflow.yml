@@ -1,0 +1,36 @@
+name: Daily Commit
+
+on:
+  schedule:
+    # This cron syntax runs the workflow at 12:00 PM UTC every day
+    - cron: '0 12 * * *'
+
+jobs:
+  commit_job:
+    runs-on: ubuntu-latest  # This specifies the virtual machine for the job to run on
+
+    steps:
+      # Step 1: Checkout the repository to access the files
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Add a commit with your specified email in the name
+      - name: Add a daily commit from email mahakmehra195@gmail.com
+        run: |
+          # Create a new file or append to an existing one
+          echo "Daily commit for $(date)" >> daily_commit.txt
+          
+          # Stage the new file
+          git add daily_commit.txt
+          
+          # Commit with the specified message and email
+          git commit -m "Daily commit by email mahakmehra195@gmail.com"
+          
+          # Push the changes back to the repository
+          git push
+
+      # Step 3: Set up Git user for the commit
+      - name: Set up Git user email
+        run: |
+          git config --global user.email "mahakmehra195@gmail.com"
+          git config --global user.name "GitHub Actions"
